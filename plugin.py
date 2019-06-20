@@ -110,6 +110,7 @@ class BasePlugin:
             
             else:
                 self.error = False
+                self.UpdateDevice("server.status")
                 
                 for current in alldata['result']:
                     for key, data in current.items():
@@ -155,7 +156,6 @@ class BasePlugin:
                 # If the inverter is offline, then all svalues are 0;
                 if self.variables["enableFlag"][2] == "0":
                     svalue = "0"
-                #DoUpdate(self.variables[key][3], nvalue, svalue)
                 
             if Devices[self.variables[key][3]].sValue != svalue:
                 DoUpdate(self.variables[key][3], nvalue, svalue)
